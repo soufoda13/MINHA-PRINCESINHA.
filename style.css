@@ -1,0 +1,63 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #161616ea;
+    color: #fffdfdd5;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+  }
+  p { color: rgb(255, 17, 49); }
+
+  h1 { color: rgb(255, 17, 17); }
+
+  
+  img {
+    width: 50%;
+    border-radius:10px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .timer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+  
+  .timer div {
+    background: #0f0f0f;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  #flores-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  .flor {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: cair 4s linear forwards;
+    opacity: 0.8;
+  }
+  
+  @keyframes cair {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }

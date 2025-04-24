@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Para meu amor 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffcdd2);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .carta, .conteudo {
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 40px;
+      background: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+      display: none;
+    }
+
+    .carta.active, .conteudo.active {
+      display: block;
+    }
+
+    h1 {
+      color: #d63384;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .foto img {
+      max-width: 100%;
+      border-radius: 15px;
+      border: 3px solid #ffb6c1;
+      margin-top: 30px;
+    }
+
+    .contador {
+      font-size: 20px;
+      color: #c2185b;
+      margin: 20px 0;
+    }
+
+    .emoji-flor {
+      position: fixed;
+      font-size: 30px;
+      animation: cair 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes cair {
+      0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        transform: translateX(50px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CARTA DE AMOR -->
+  <div class="carta active" id="carta">
+    <h1>Minha linda,</h1>
+    <p>
+      Escrevo essa carta para lembrar o quanto você é especial pra mim. Cada dia ao seu lado é um presente que eu nunca quero perder. Obrigado por ser quem você é e por fazer meu mundo mais bonito com seu amor. 💖
+    </p>
+    <p>
+      Agora... clique no botão abaixo para ver uma surpresa feita com carinho só pra você. 💌
+    </p>
+    <button onclick="abrirSurpresa()">Ver nossa história 💑</button>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL COM FOTO E CONTADOR -->
+  <div class="conteudo" id="conteudo">
+    <h1>Nosso Amor em Tempo Real 💞</h1>
+    <div class="contador" id="contador"></div>
+
+    <div class="foto">
+      <img src="IMG_20250130_214306.jpg" alt="Nossa foto">
+    </div>
+    <h2>DIA MAIS INCRIVEL DAS NOSSAS VIDAS 💕</H2>
+    <p> simples, porém feito com muito amor, te amo muito... Você é o amor da minha vida 💖.
+     Hoje completamos 3 meses juntos… Parece pouco tempo se eu olho no calendário, mas quando olho pra tudo que a gente viveu, pra cada risada, cada conversa, cada carinho, cada momento em silêncio que mesmo assim dizia tudo… sinto como se já estivéssemos conectados há vidas. Você chegou como quem não queria nada e, sem pedir licença, se tornou tudo. Meu riso mais sincero, meu abrigo em dias difíceis, 
+     meu sonho acordado. Em 3 meses, você me mostrou que o amor não precisa ser complicado pra ser forte. Ele só precisa ser leve, verdadeiro e recíproco. E o que a gente tem… é exatamente isso. Obrigado por ser meu apoio, minha inspiração e minha paz. Que venham mais 3, mais 6, mais 12... mais uma vida inteira ao seu lado. 💖 Te amo, hoje e sempre.</p>
+    <button onclick="tocarMusica()">Tocar nossa música 🎵</button>
+  </div>
+
+  <audio id="musica" src="Elvis Presley - Can't Help Falling In Love (Official Audio).mp3" preload="auto"></audio>
+  
+  </body>
+  <script>
+    function abrirSurpresa() {
+      document.getElementById('carta').classList.remove('active');
+      document.getElementById('conteudo').classList.add('active');
+      iniciarContador();
+      soltarFlores();
+    }
+
+    function tocarMusica() {
+      document.getElementById('musica').play();
+    }
+
+    function iniciarContador() {
+      const dataNamoro = new Date("2025-01-23T00:00:00");
+
+      function atualizarContador() {
+        const agora = new Date();
+        const diff = agora - dataNamoro;
+
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diff / (1000 * 60)) % 60);
+        const segundos = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("contador").innerHTML =
+          `Estamos juntos há ${dias} dias, ${horas}h ${minutos}m ${segundos}s 💘`;
+      }
+
+      setInterval(atualizarContador, 1000);
+      atualizarContador();
+    }
+
+    function soltarFlores() {
+      const emojis = ['🌸', '🌺', '🌼', '🌷'];
+      for (let i = 0; i < 50; i++) {
+        const flor = document.createElement('div');
+        flor.classList.add('emoji-flor');
+        flor.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        flor.style.left = Math.random() * 100 + 'vw';
+        flor.style.animationDuration = (6 + Math.random() * 5) + 's';
+        document.body.appendChild(flor);
+        setTimeout(() => {
+          flor.remove();
+        }, 10000);
+      }
+    }
+  </script>
+
+  <BODY></BODY>
+</html>
